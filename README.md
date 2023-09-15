@@ -89,7 +89,7 @@ $provider = new \Chadhutchins\OAuth2\Client\Provider\Slack([
 ]);
     
  $authUrl = $provider->$provider->getAuthorizationUrl([
-    'scope' => 'user:read user:write file:write'
+    'scope' => 'openid email profile'
  ]);
  ```
  
