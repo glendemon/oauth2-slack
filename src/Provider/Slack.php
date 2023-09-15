@@ -25,7 +25,7 @@ class Slack extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://slack.com/api/openid/connect/authorize';
+        return 'https://slack.com/openid/connect/authorize';
     }
 
     /**
