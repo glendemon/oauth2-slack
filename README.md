@@ -1,14 +1,14 @@
 This is a fork of https://github.com/adam-paterson/oauth2-slack but includes support for Slack v2 API.
 
 # Slack Provider for OAuth 2.0 Client
-[![Latest Version](https://img.shields.io/github/release/adam-paterson/oauth2-slack.svg?style=flat-square)](https://github.com/adam-paterson/oauth2-slack/releases)
+[![Latest Version](https://img.shields.io/github/release/chadhutchins/oauth2-slack.svg?style=flat-square)](https://github.com/chadhutchins/oauth2-slack/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/adam-paterson/oauth2-slack/master.svg?style=flat-square)](https://travis-ci.org/adam-paterson/oauth2-slack)
-[![HHVM Status](https://img.shields.io/hhvm/adam-paterson/oauth2-slack.svg?style=flat-square)](http://hhvm.h4cc.de/package/adam-paterson/oauth2-slack)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/adam-paterson/oauth2-slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/adam-paterson/oauth2-slack/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/adam-paterson/oauth2-slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/adam-paterson/oauth2-slack)
-[![Dependency Status](https://img.shields.io/versioneye/d/php/adam-paterson:oauth2-slack/1.1.2.svg?style=flat-square)](https://www.versioneye.com/php/adam-paterson:oauth2-slack/1.1.2)
-[![Total Downloads](https://img.shields.io/packagist/dt/adam-paterson/oauth2-slack.svg?style=flat-square)](https://packagist.org/packages/adam-paterson/oauth2-slack)
+[![Build Status](https://img.shields.io/travis/chadhutchins/oauth2-slack/master.svg?style=flat-square)](https://travis-ci.org/chadhutchins/oauth2-slack)
+[![HHVM Status](https://img.shields.io/hhvm/chadhutchins/oauth2-slack.svg?style=flat-square)](http://hhvm.h4cc.de/package/chadhutchins/oauth2-slack)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/chadhutchins/oauth2-slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/chadhutchins/oauth2-slack/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/chadhutchins/oauth2-slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/chadhutchins/oauth2-slack)
+[![Dependency Status](https://img.shields.io/versioneye/d/php/chadhutchins:oauth2-slack/1.1.2.svg?style=flat-square)](https://www.versioneye.com/php/chadhutchins:oauth2-slack/1.1.2)
+[![Total Downloads](https://img.shields.io/packagist/dt/chadhutchins/oauth2-slack.svg?style=flat-square)](https://packagist.org/packages/chadhutchins/oauth2-slack)
 
 This package provides Slack OAuth 2.0 support for the PHP League's [OAuth 2.0 Client](https://github.com/thephpleague/oauth2-client).
 
@@ -124,15 +124,15 @@ $ ./vendor/bin/phpunit
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/adam-paterson/oauth2-slack/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/chadhutchins/oauth2-slack/blob/master/CONTRIBUTING.md) for details.
 
 
 ## Credits
 
 - [Adam Paterson](https://github.com/adam-paterson)
-- [All Contributors](https://github.com/adam-paterson/oauth2-slack/contributors)
+- [All Contributors](https://github.com/chadhutchins/oauth2-slack/contributors)
 
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/adam-paterson/oauth2-slack/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/chadhutchins/oauth2-slack/blob/master/LICENSE) for more information.
