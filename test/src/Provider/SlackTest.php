@@ -71,7 +71,7 @@ class SlackTest extends TestCase
         $url = $this->provider->getAuthorizationUrl($params);
         $uri = parse_url($url);
 
-        $this->assertEquals('/oauth/authorize', $uri['path']);
+        $this->assertEquals('/openid/connect/authorize', $uri['path']);
     }
 
     public function testGetBaseAccessTokenUrl()
@@ -79,7 +79,7 @@ class SlackTest extends TestCase
         $params = [];
         $url = $this->provider->getBaseAccessTokenUrl($params);
         $uri = parse_url($url);
-        $this->assertEquals('/api/oauth.access', $uri['path']);
+        $this->assertEquals('/api/openid.connect.token', $uri['path']);
     }
 
     public function testGetAccessToken()
