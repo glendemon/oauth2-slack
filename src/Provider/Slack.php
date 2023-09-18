@@ -55,16 +55,6 @@ class Slack extends AbstractProvider
     }
 
     /**
-     * @param $token
-     *
-     * @return string
-     */
-    public function getAuthorizedUserTestUrl($token)
-    {
-        return 'https://slack.com/api/auth.test?token=' . $token;
-    }
-
-    /**
      * Checks a provider response for errors.
      *
      * @param ResponseInterface $response
@@ -99,46 +89,5 @@ class Slack extends AbstractProvider
     protected function getDefaultScopes()
     {
         return ['openid', 'profile'];
-    }
-
-    /**
-     * @param AccessToken $token
-     *
-     * @return mixed
-     */
-    public function fetchAuthorizedUserDetails(AccessToken $token)
-    {
-        $url = $this->getAuthorizedUserTestUrl($token);
-
-        $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
-
-        // Keep compatibility with League\OAuth2\Client v1
-        if (!method_exists($this, 'getParsedResponse')) {
-            return $this->getResponse($request);
-        }
-
-        return $this->getParsedResponse($request);
-    }
-
-    /**
-     * @param AccessToken $token
-     *
-     * @return SlackAuthorizedUser
-     */
-    public function getAuthorizedUser(AccessToken $token)
-    {
-        $response = $this->fetchAuthorizedUserDetails($token);
-
-        return $this->createAuthorizedUser($response);
-    }
-
-    /**
-     * @param $response
-     *
-     * @return SlackAuthorizedUser
-     */
-    protected function createAuthorizedUser($response)
-    {
-        return new SlackAuthorizedUser($response);
     }
 }
