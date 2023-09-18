@@ -3,9 +3,10 @@ namespace Chadhutchins\OAuth2\Client\Test\Provider;
 
 use Chadhutchins\OAuth2\Client\Provider\Slack;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
-class SlackTest extends \PHPUnit_Framework_TestCase
+class SlackTest extends TestCase
 {
     protected $provider;
 
@@ -17,7 +18,7 @@ class SlackTest extends \PHPUnit_Framework_TestCase
         return $method;
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->provider = new Slack([
             'clientId'      => 'mock_client_id',
@@ -26,7 +27,7 @@ class SlackTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
         parent::tearDown();
