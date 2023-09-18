@@ -2,11 +2,11 @@
 
 namespace Chadhutchins\OAuth2\Client\Provider;
 
-use League\OAuth2\Client\Provider\AbstractProvider;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
-use League\OAuth2\Client\Token\AccessToken;
-use Psr\Http\Message\ResponseInterface;
 use Chadhutchins\OAuth2\Client\Provider\Exception\SlackProviderException;
+use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Slack
@@ -18,6 +18,8 @@ use Chadhutchins\OAuth2\Client\Provider\Exception\SlackProviderException;
  */
 class Slack extends AbstractProvider
 {
+    use BearerAuthorizationTrait;
+
     /**
      * Returns the base URL for authorizing a client.
      *
@@ -49,8 +51,6 @@ class Slack extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        $authorizedUser = $this->getAuthorizedUser($token);
-
         $params = [
             'token' => $token->getToken(),
         ];
