@@ -2,11 +2,11 @@
 
 namespace Chadhutchins\OAuth2\Client\Provider;
 
-use League\OAuth2\Client\Provider\AbstractProvider;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
-use League\OAuth2\Client\Token\AccessToken;
-use Psr\Http\Message\ResponseInterface;
 use Chadhutchins\OAuth2\Client\Provider\Exception\SlackProviderException;
+use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Slack
@@ -18,6 +18,8 @@ use Chadhutchins\OAuth2\Client\Provider\Exception\SlackProviderException;
  */
 class Slack extends AbstractProvider
 {
+    use BearerAuthorizationTrait;
+
     /**
      * Returns the base URL for authorizing a client.
      *
@@ -49,23 +51,7 @@ class Slack extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        $authorizedUser = $this->getAuthorizedUser($token);
-
-        $params = [
-            'token' => $token->getToken(),
-        ];
-
-        return 'https://slack.com/api/openid.connect.userInfo?'.http_build_query($params);
-    }
-
-    /**
-     * @param $token
-     *
-     * @return string
-     */
-    public function getAuthorizedUserTestUrl($token)
-    {
-        return 'https://slack.com/api/auth.test?token=' . $token;
+        return 'https://slack.com/api/openid.connect.userInfo';
     }
 
     /**
@@ -102,47 +88,6 @@ class Slack extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return [];
-    }
-
-    /**
-     * @param AccessToken $token
-     *
-     * @return mixed
-     */
-    public function fetchAuthorizedUserDetails(AccessToken $token)
-    {
-        $url = $this->getAuthorizedUserTestUrl($token);
-
-        $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
-
-        // Keep compatibility with League\OAuth2\Client v1
-        if (!method_exists($this, 'getParsedResponse')) {
-            return $this->getResponse($request);
-        }
-
-        return $this->getParsedResponse($request);
-    }
-
-    /**
-     * @param AccessToken $token
-     *
-     * @return SlackAuthorizedUser
-     */
-    public function getAuthorizedUser(AccessToken $token)
-    {
-        $response = $this->fetchAuthorizedUserDetails($token);
-
-        return $this->createAuthorizedUser($response);
-    }
-
-    /**
-     * @param $response
-     *
-     * @return SlackAuthorizedUser
-     */
-    protected function createAuthorizedUser($response)
-    {
-        return new SlackAuthorizedUser($response);
+        return ['openid', 'profile'];
     }
 }

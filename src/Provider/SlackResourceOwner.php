@@ -47,78 +47,17 @@ class SlackResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->response['user']['id'] ?: null;
+        return $this->response['https://slack.com/user_id'] ?: null;
     }
 
-
     /**
-     * Get user name
+     * Get team id
      *
      * @return string|null
      */
-    public function getName()
+    public function getTeamId()
     {
-        return $this->response['user']['name'] ?: null;
-    }
-
-    /**
-     * Is user deleted?
-     *
-     * @return bool|null
-     */
-    public function isDeleted()
-    {
-        return $this->response['user']['deleted'] ?: null;
-    }
-
-    /**
-     * Get user color
-     *
-     * @return string|null
-     */
-    public function getColor()
-    {
-        return $this->response['user']['color'] ?: null;
-    }
-
-    /**
-     * Get user profile
-     *
-     * @return string|null
-     */
-    public function getProfile()
-    {
-        return $this->response['user']['profile'] ?: null;
-    }
-
-    /**
-     * Get user first name
-     *
-     * @return string|null
-     */
-    public function getFirstName()
-    {
-        return $this->response['user']['profile']['first_name'] ?: null;
-    }
-
-    /**
-     * Get user last name
-     *
-     * @return string|null
-     */
-    public function getLastName()
-    {
-        return $this->response['user']['profile']['last_name'] ?: null;
-    }
-
-    /**
-     * Get user real name
-     *
-     * @return string|null
-     */
-    public function getRealName()
-    {
-        return $this->response['user']['profile']['real_name'] ?: null;
+        return $this->response['https://slack.com/team_id'] ?: null;
     }
 
     /**
@@ -128,116 +67,216 @@ class SlackResourceOwner implements ResourceOwnerInterface
      */
     public function getEmail()
     {
-        return $this->response['user']['profile']['email'] ?: null;
+        return $this->response['email'] ?: null;
     }
 
     /**
-     * Get Skype username
-     *
-     * @return string|null
-     */
-    public function getSkype()
-    {
-        return $this->response['user']['profile']['skype'] ?: null;
-    }
-
-    /**
-     * Get phone number
-     *
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->response['user']['profile']['phone'] ?: null;
-    }
-
-    /**
-     * Get 24x24 image url
-     *
-     * @return string|null
-     */
-    public function getImage24()
-    {
-        return $this->response['user']['profile']['image_24'] ?: null;
-    }
-
-    /**
-     * Get 32x32 image url
-     *
-     * @return string|null
-     */
-    public function getImage32()
-    {
-        return $this->response['user']['profile']['image_32'] ?: null;
-    }
-
-    /**
-     * Get 48x48 image url
-     *
-     * @return string|null
-     */
-    public function getImage48()
-    {
-        return $this->response['user']['profile']['image_48'] ?: null;
-    }
-
-    /**
-     * Get 72x72 image url
-     *
-     * @return string|null
-     */
-    public function getImage72()
-    {
-        return $this->response['user']['profile']['image_72'] ?: null;
-    }
-
-    /**
-     * Get 192x192 image url
-     *
-     * @return string|null
-     */
-    public function getImage192()
-    {
-        return $this->response['user']['profile']['image_192'] ?: null;
-    }
-
-    /**
-     * Is user admin?
+     * Is email verified?
      *
      * @return bool|null
      */
-    public function isAdmin()
+    public function isEmailVerified()
     {
-        return $this->response['user']['is_admin'] ?: null;
+        return $this->response['email_verified'] ?: null;
     }
 
     /**
-     * Is user owner?
+     * Get timestamp with date of email verification
+     *
+     * @return int|null
+     */
+    public function getDateEmailVerified()
+    {
+        return $this->response['date_email_verified'] ?: null;
+    }
+
+    /**
+     * Get user name
      *
      * @return string|null
      */
-    public function isOwner()
+    public function getName()
     {
-        return $this->response['user']['is_owner'] ?: null;
+        return $this->response['name'] ?: null;
     }
 
     /**
-     * Does user have 2FA enabled?
+     * Get url to user's picture
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function hasTwoFactorAuthentication()
+    public function getPicture()
     {
-        return $this->response['user']['has_2fa'] ?: null;
+        return $this->response['picture'] ?: null;
     }
 
     /**
-     * Does user have files?
+     * Get user given name
      *
+     * @return string|null
+     */
+    public function getGivenName()
+    {
+        return $this->response['given_name'] ?: null;
+    }
+
+    /**
+     * Get user family name
+     *
+     * @return string|null
+     */
+    public function getFamilyName()
+    {
+        return $this->response['family_name'] ?: null;
+    }
+
+    /**
+     * Get user locale
+     *
+     * @return string|null
+     */
+    public function getLocale()
+    {
+        return $this->response['locale'] ?: null;
+    }
+
+    /**
+     * Get team name
+     *
+     * @return string|null
+     */
+    public function getTeamName()
+    {
+        return $this->response['https://slack.com/team_name'] ?: null;
+    }
+
+    /**
+     * Get team domain
+     *
+     * @return string|null
+     */
+    public function getTeamDomain()
+    {
+        return $this->response['https://slack.com/team_domain'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage24px()
+    {
+        return $this->response['https://slack.com/user_image_24'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage32px()
+    {
+        return $this->response['https://slack.com/user_image_32'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage48px()
+    {
+        return $this->response['https://slack.com/user_image_48'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage72px()
+    {
+        return $this->response['https://slack.com/user_image_72'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage192px()
+    {
+        return $this->response['https://slack.com/user_image_192'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage512px()
+    {
+        return $this->response['https://slack.com/user_image_512'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserImage1024px()
+    {
+        return $this->response['https://slack.com/user_image_1024'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage34px()
+    {
+        return $this->response['https://slack.com/team_image_34'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage44px()
+    {
+        return $this->response['https://slack.com/team_image_44'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage68px()
+    {
+        return $this->response['https://slack.com/team_image_68'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage88px()
+    {
+        return $this->response['https://slack.com/team_image_88'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage102px()
+    {
+        return $this->response['https://slack.com/team_image_102'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage132px()
+    {
+        return $this->response['https://slack.com/team_image_132'] ?: null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeamImage230px()
+    {
+        return $this->response['https://slack.com/team_image_230'] ?: null;
+    }
+
+    /**
      * @return bool|null
      */
-    public function hasFiles()
+    public function isTeamImageDefault()
     {
-        return $this->response['user']['has_files'] ?: null;
+        return $this->response['https://slack.com/team_image_default'] ?: null;
     }
 }
