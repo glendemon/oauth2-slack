@@ -1,0 +1,14 @@
+version: "3.8"
+
+x-restart-policy: &restart_policy
+  restart: unless-stopped
+
+services:
+  php:
+    <<: *restart_policy
+    build:
+      context: .
+      target: app_php
+    pull_policy: never
+    volumes:
+      - ./:/srv/app
