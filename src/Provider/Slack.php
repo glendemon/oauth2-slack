@@ -51,11 +51,7 @@ class Slack extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        $params = [
-            'token' => $token->getToken(),
-        ];
-
-        return 'https://slack.com/api/openid.connect.userInfo?'.http_build_query($params);
+        return 'https://slack.com/api/openid.connect.userInfo';
     }
 
     /**
