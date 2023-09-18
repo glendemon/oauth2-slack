@@ -98,7 +98,7 @@ class Slack extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return [];
+        return ['openid', 'profile'];
     }
 
     /**
