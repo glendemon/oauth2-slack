@@ -5,6 +5,7 @@ namespace Chadhutchins\OAuth2\Client\Provider;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
 use Chadhutchins\OAuth2\Client\Provider\Exception\SlackProviderException;
 
@@ -18,6 +19,8 @@ use Chadhutchins\OAuth2\Client\Provider\Exception\SlackProviderException;
  */
 class Slack extends AbstractProvider
 {
+    use BearerAuthorizationTrait;
+
     /**
      * Returns the base URL for authorizing a client.
      *
@@ -52,7 +55,6 @@ class Slack extends AbstractProvider
         $authorizedUser = $this->getAuthorizedUser($token);
 
         $params = [
-            'token' => $token->getToken(),
             'user'  => $authorizedUser->getId()
         ];
 
@@ -60,13 +62,11 @@ class Slack extends AbstractProvider
     }
 
     /**
-     * @param $token
-     *
      * @return string
      */
-    public function getAuthorizedUserTestUrl($token)
+    public function getAuthorizedUserTestUrl()
     {
-        return 'https://slack.com/api/auth.test?token=' . $token;
+        return 'https://slack.com/api/auth.test';
     }
 
     /**
@@ -113,9 +113,9 @@ class Slack extends AbstractProvider
      */
     public function fetchAuthorizedUserDetails(AccessToken $token)
     {
-        $url = $this->getAuthorizedUserTestUrl($token);
+        $url = $this->getAuthorizedUserTestUrl();
 
-        $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
+        $request = $this->getAuthenticatedRequest(self::METHOD_POST, $url, $token);
 
         // Keep compatibility with League\OAuth2\Client v1
         if (!method_exists($this, 'getParsedResponse')) {
